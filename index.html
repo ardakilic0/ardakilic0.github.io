@@ -58,6 +58,7 @@ video,.shot{display:block;width:100%;height:auto;border-radius:8px;background:#0
 .strip figure{margin:0;flex:none;scroll-snap-align:start}
 .strip img{display:block;height:clamp(200px,28vw,300px);width:auto;border-radius:6px;border:1px solid var(--line)}
 .strip figcaption{font-size:13px;color:var(--mute);margin-top:6px}
+.game .cover{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
 .game video{border-radius:0;aspect-ratio:16/9;object-fit:cover}
 .games{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .game{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
@@ -253,14 +254,14 @@ gs.forEach((g,i)=>{const y=30+i*42;rg+=`<text x="0" y="${y+18}" font-size="12.5"
 document.getElementById('rollic').innerHTML=rg;
 
 const games=[
- ['Tiny Planets','Unity · Level Designer, UI Designer','A third-person game about space pollution with an unusual gravity system, made for games4change.','1Wt1ykIdcb9WMPCbg44pfqqIFENkvabqy','#127a86',''],
+ ['Tiny Planets','Unity · Level Designer, UI Designer','A third-person game about space pollution with an unusual gravity system, made for games4change.','1Wt1ykIdcb9WMPCbg44pfqqIFENkvabqy','#127a86','','tinyplanets'],
  ['Hokkaido','Unreal Engine 5 · Game Developer, Level Designer','A 3D third-person platformer: a monkey crosses courses and enemies with the help of a Hokkaido pumpkin to reach space.','1552fMbQoTe1DiYtPbCm9VvpmO4BSF6Ib','#ff5a1f','hokkaido'],
  ['Carrot Cake','Unreal Engine 5 · Game Developer, Level Designer','A first-person farming game: back at his late grandmother\'s farmhouse, the hero tries to bake her carrot cake.','1U12SPvXqF-0-H9DrRy95k0zQetfN49tv','#e8a317','carrotcake'],
- ['Sandstorm','Unreal Engine 5 · Game Developer, Game Designer','A 2.5D endless-runner platformer about a rock trying to outrun a sandstorm.','1cie7Za0mYkGSCwIcXxTqkaydy1JPLMec','#c98a4b',''],
+ ['Sandstorm','Unreal Engine 5 · Game Developer, Game Designer','A 2.5D endless-runner platformer about a rock trying to outrun a sandstorm.','1cie7Za0mYkGSCwIcXxTqkaydy1JPLMec','#c98a4b','','sandstorm'],
  ['Born to Die','Unreal Engine 5 · Game Developer','A third-person hack-and-slash shooter: a man with a fatal illness faces a zombie invasion his illness may help stop.','1LKylMyTsRCPfu0m_wHXc8MNXJURmOiUV','#8f2d3a','borntodie'],
  ['Anger Joe Mama','Unreal Engine 5 · Game Developer','A comedy hack-and-slash: get revenge on an evil stepmother by breaking everything in the house.','1XEBJe4cbMQjwfXLMhIkSLb603dw10F-F','#6b4bd6','angryjoemama']];
 const thumb=(c,i)=>`<svg class="thumb" viewBox="0 0 300 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="120" fill="${c}"/>${[0,1,2,3].map(k=>`<rect x="${20+k*70+(i*13)%30}" y="${60-((k+i)%3)*18}" width="${44+((k*i)%3)*10}" height="${70+((k+i)%3)*18}" rx="3" fill="#fff" opacity="${.12+k*.05}"/>`).join('')}<circle cx="${240-(i*23)%120}" cy="34" r="12" fill="#fff" opacity=".85"/></svg>`;
-document.getElementById('gamelist').innerHTML=games.map((g,i)=>`<article class="game">${g[5]?`<video controls preload="none" playsinline poster="media/${g[5]}.jpg"><source src="media/${g[5]}.mp4" type="video/mp4"></video>`:thumb(g[4],i)}<div class="body"><h3>${g[0]}</h3><div class="meta">${g[1]}</div><p>${g[2]}</p>${g[5]?'':`<div class="links"><a href="${D}${g[3]}/view">Watch video on Drive</a></div>`}</div></article>`).join('');
+document.getElementById('gamelist').innerHTML=games.map((g,i)=>`<article class="game">${g[5]?`<video controls preload="none" playsinline poster="media/${g[5]}.jpg"><source src="media/${g[5]}.mp4" type="video/mp4"></video>`:g[6]?`<img class="cover" src="media/${g[6]}.jpg" alt="${g[0]} screenshot" loading="lazy">`:thumb(g[4],i)}<div class="body"><h3>${g[0]}</h3><div class="meta">${g[1]}</div><p>${g[2]}</p>${g[5]?'':`<div class="links"><a href="${D}${g[3]}/view">Watch video on Drive</a></div>`}</div></article>`).join('');
 }
 </script>
 </body>
