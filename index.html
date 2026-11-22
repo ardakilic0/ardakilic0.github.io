@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arda Kılıç · Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: confident, practical; a level designer showing his process.
+   IDEA: the page behaves like a level design document: whitebox blocks on grid paper, a critical path.
+   PICTURE: top-down whitebox map of his career, dashed player path from start to an exit portal.
+   COLOUR and TYPE: graph-paper white, whitebox greys, ink; player-start orange accent, portal teal support. Archivo + Inter.
+   LAYOUT: hero map beside name; experience; four case studies as document sheets; game grid; contact band. */
+:root{color-scheme:light dark;
+--bg:light-dark(#f6f7f8,#101317);--ink:light-dark(#14171c,#e9ecf0);--mute:light-dark(#596270,#9aa4b1);
+--grid:light-dark(#e3e7ec,#1b2027);--block:light-dark(#d5dbe2,#2a313a);--blockTop:light-dark(#e9edf1,#36404b);--shade:light-dark(#b6bfca,#0a0c0f);
+--card:light-dark(#ffffff,#161b21);--line:light-dark(#d9dee4,#262d36);
+--acc:#ff5a1f;--accInk:light-dark(#c63d0a,#ff7a45);--tel:light-dark(#127a86,#3cc3cf)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+.paper{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px}
+h1,h2,h3{font-family:Archivo,Inter,sans-serif;line-height:1.05;text-wrap:balance;margin:0}
+h1{font-size:clamp(40px,6vw,64px);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(28px,3.4vw,40px);font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+h3{font-size:24px;font-weight:700}
+p{margin:0 0 12px}
+.lede{color:var(--mute);max-width:62ch;margin-bottom:28px}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;flex-wrap:wrap;gap:4px 20px;align-items:center;padding:10px max(5vw,16px)}
+nav b{font-family:Archivo,Inter,system-ui,sans-serif;font-weight:800;margin-right:auto}
+nav a{text-decoration:none;color:var(--mute);font-size:15px;padding:8px 0}
+nav a:hover,nav a:focus-visible{color:var(--ink)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.role{font-family:Archivo,Inter,system-ui,sans-serif;font-weight:700;font-size:clamp(20px,2.4vw,26px);color:var(--accInk);margin:14px 0 16px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:6px;font-weight:600;text-decoration:none;border:2px solid var(--ink)}
+.btn.main{background:var(--ink);color:var(--bg)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.map{width:100%;height:auto;display:block}
+.map text{font-family:Inter,sans-serif}
+.path{stroke-dasharray:10 8;animation:walk 1.6s linear infinite}
+@keyframes walk{to{stroke-dashoffset:-36}}
+@media(prefers-reduced-motion:reduce){.path{animation:none}}
+.jobs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.job{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px}
+.when{color:var(--mute);font-size:14px;white-space:nowrap}
+.job h3{margin:6px 0 4px}.job .co{font-weight:600;margin-bottom:10px}
+.tag{display:inline-block;font-size:13px;padding:2px 10px;border-radius:99px;background:var(--block);margin:0 6px 6px 0}
+.case{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:clamp(20px,3vw,36px);margin-bottom:24px}
+.case .kind{font-size:14px;color:var(--tel);font-weight:600;margin-bottom:6px}
+.case h3{font-size:clamp(26px,3vw,34px);margin-bottom:12px}
+.case ul{margin:0 0 16px;padding-left:20px}.case li{margin-bottom:6px}
+.links{display:flex;flex-wrap:wrap;gap:8px 18px}
+.links a{font-weight:600;color:var(--accInk);text-underline-offset:3px;padding:10px 0}
+.fig{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:18px;align-self:start}
+.fig svg{width:100%;height:auto;display:block}
+.fig .cap{font-size:13px;color:var(--mute);margin-top:10px}
+.full{grid-column:1/-1}
+video,.shot{display:block;width:100%;height:auto;border-radius:8px;background:#000}
+.fig img{display:block;width:100%;height:auto;border-radius:4px}
+.strip{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+.strip figure{margin:0;flex:none;scroll-snap-align:start}
+.strip img{display:block;height:clamp(200px,28vw,300px);width:auto;border-radius:6px;border:1px solid var(--line)}
+.strip figcaption{font-size:13px;color:var(--mute);margin-top:6px}
+.game video{border-radius:0;aspect-ratio:16/9;object-fit:cover}
+.games{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.game{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.thumb{height:120px;display:block}
+.game .body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.game h3{font-size:21px;margin-bottom:4px}
+.game .meta{font-size:14px;color:var(--mute);margin-bottom:10px}
+.game p{font-size:15px;flex:1}
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.skills h3{font-size:18px;margin-bottom:10px}
+.contact{background:var(--ink);color:var(--bg)}
+.contact .lede{color:color-mix(in srgb,var(--bg) 70%,var(--ink))}
+.contact .btn{border-color:var(--bg)}.contact .btn.main{background:var(--acc);border-color:var(--acc);color:#fff}
+.mail{font-size:clamp(20px,3vw,28px);font-family:Archivo,Inter,system-ui,sans-serif;font-weight:700;overflow-wrap:anywhere}
+footer{font-size:13px;padding:20px max(5vw,16px);color:var(--mute)}
+@media(max-width:900px){.hero,.case{grid-template-columns:minmax(0,1fr)}.games,.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.jobs,.games,.skills{grid-template-columns:minmax(0,1fr)}nav a.hide{display:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><b>Arda Kılıç</b><a href="#experience" class="hide">Experience</a><a href="#work">Case studies</a><a href="#games">Games</a><a href="#contact">Contact</a></div></nav>
+
+<header class="band paper"><div class="wrap hero">
+  <div>
+    <h1>Arda Kılıç</h1>
+    <div class="role">Game Designer &amp; Level Designer</div>
+    <p class="lede" style="color:var(--ink)">I design levels, puzzles and the systems around them, from paper layouts and beat charts to whitebox and shipped content. Former level design intern at TaleWorlds Entertainment (Mount &amp; Blade II: Bannerlord). Based in Istanbul.</p>
+    <div class="btns">
+      <a class="btn main" href="#work">See my work</a>
+      <a class="btn" href="https://drive.google.com/file/d/1TRje8spyxZyESHWWrJtm1AG9_o535GQB/view">Download CV</a>
+    </div>
+  </div>
+  <svg class="map" viewBox="0 0 600 440" role="img" aria-label="Top-down level map of Arda's path: Bahçeşehir University, Eudemonia Games, TaleWorlds, next level">
+    <defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 8L8 0" stroke="var(--shade)" stroke-width="1"/></pattern></defs>
+    <rect x="20" y="20" width="560" height="400" rx="6" fill="url(#hatch)" opacity=".45"/>
+    <g id="rooms"></g>
+    <path class="path" d="M92 372 H520 V150 H160" fill="none" stroke="var(--acc)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="92" cy="372" r="11" fill="var(--acc)"/><circle cx="92" cy="372" r="4" fill="#fff"/>
+    <text x="110" y="352" font-size="12" font-weight="600" fill="var(--accInk)">Player start</text>
+    <g transform="translate(150 150)">
+      <circle r="30" fill="none" stroke="var(--tel)" stroke-width="3" stroke-dasharray="6 5"/>
+      <circle r="20" fill="var(--tel)" opacity=".25"/><circle r="10" fill="var(--tel)"/>
+    </g>
+  </svg>
+</div></header>
+
+<section class="band" id="experience"><div class="wrap">
+  <h2>Experience</h2>
+  <p class="lede">Two studio internships: one on a large PC/console sandbox RPG, one on an AI-native MMO.</p>
+  <div class="jobs">
+    <article class="job"><div class="when">Jul 2025 – Oct 2025</div><h3>Level Designer Intern</h3><div class="co">TaleWorlds Entertainment</div>
+      <p>Level design on Mount &amp; Blade II: Bannerlord, a sandbox action-RPG and strategy game from one of Turkey's leading independent studios.</p>
+      <a href="https://www.taleworlds.com/en/Games/Bannerlord" style="font-weight:600;color:var(--accInk)">About Bannerlord</a></article>
+    <article class="job"><div class="when">Mar 2025 – Jun 2025</div><h3>Game Developer Intern</h3><div class="co">Eudemonia Games</div>
+      <p>Unity development on Shatterwake Online, an AI-native D&amp;D sandbox MMO that brings the creative freedom of tabletop play to PC.</p>
+      <a href="https://shatterwakeonline.com/" style="font-weight:600;color:var(--accInk)">shatterwakeonline.com</a></article>
+  </div>
+</div></section>
+
+<section class="band paper" id="work"><div class="wrap">
+  <h2>Case studies</h2>
+  <p class="lede">Design work with the documents behind it: layouts, flow and beat charts, difficulty curves and validation plans.</p>
+
+  <article class="case">
+    <div>
+      <div class="kind">Level design document · 3D first-person narrative</div>
+      <h3>Heritage</h3>
+      <p>An orphan explores the house he inherited from a family he never met. Two enclosed levels, the ground floor and a dark labyrinthine cellar, where progress is gated by keys and light.</p>
+      <ul>
+        <li>Critical and optional paths: the keycard opens the hidden cellar; the flashlight and lighter (for wall torches) make the cellar readable.</li>
+        <li>Two-act tension: an ordinary but uneasy house, then a cellar that reveals its secrets and ends at a mysterious portal.</li>
+        <li>Full documentation: 2D layout and legend, flow chart, beat chart, room-by-room objectives and an asset list of 40 items.</li>
+        <li>Built and tested as a 3D whitebox.</li>
+      </ul>
+      <div class="links">
+        <a href="https://drive.google.com/drive/folders/1H1aGAfQ5GViRHVnWsm4klX8oJLDOStZM">Open the project</a>
+        <a href="https://drive.google.com/file/d/13wQ8_fvM7Jxl5s4Zja9JOaeSYPdE32Ix/view">Watch whitebox gameplay</a>
+        <a href="https://drive.google.com/file/d/1PFzKaVyvKg2Pvz8j9Zt_v0g8RnQXpUyH/view">Read the LDD</a>
+      </div>
+    </div>
+    <div class="fig">
+      <img src="img/layout.jpg" alt="Heritage 2D layout: ground floor and cellar with critical path in green and optional path in orange" loading="lazy">
+      <div class="cap">2D layout and legend. Green: critical path. Orange: optional path to the flashlight and lighter.</div>
+    </div>
+    <div class="full">
+      <video controls preload="none" playsinline poster="media/heritage.jpg"><source src="media/heritage.mp4" type="video/mp4"></video>
+      <div class="cap" style="font-size:13px;color:var(--mute);margin:8px 0 18px">3D whitebox playthrough, from the front door to the portal.</div>
+      <div class="strip">
+        <figure><img src="img/her_blockout.jpg" alt="Whitebox block-out of both floors" loading="lazy"><figcaption>Block-out of both floors</figcaption></figure>
+        <figure><img src="img/her_living.jpg" alt="Whitebox living room" loading="lazy"><figcaption>Living room whitebox</figcaption></figure>
+        <figure><img src="img/her_card.jpg" alt="Keycard pickup prompt" loading="lazy"><figcaption>Keycard pickup</figcaption></figure>
+        <figure><img src="img/her_scan.jpg" alt="Scan the card to open the cellar" loading="lazy"><figcaption>Card opens the hidden cellar</figcaption></figure>
+        <figure><img src="img/her_corridor.jpg" alt="Cellar corridor lit by wall torches" loading="lazy"><figcaption>Torch-lit cellar corridor</figcaption></figure>
+        <figure><img src="img/her_portal.jpg" alt="Portal at the end of the level" loading="lazy"><figcaption>The portal: end of level</figcaption></figure>
+        <figure><img src="img/flow.png" alt="Heritage flow chart" loading="lazy" style="background:#fff"><figcaption>Flow chart</figcaption></figure>
+        <figure><img src="img/beat.png" alt="Heritage beat chart" loading="lazy" style="background:#fff"><figcaption>Beat chart</figcaption></figure>
+      </div>
+    </div>
+  </article>
+
+  <article class="case">
+    <div>
+      <div class="kind">Mobile puzzle game</div>
+      <h3>Slide Factory</h3>
+      <p>A sliding-box puzzle game whose mechanics are introduced one at a time and then combined, up to a level that uses all of them.</p>
+      <ul>
+        <li>Onboarding: goal intro, box intro and a swipe demo before free play.</li>
+        <li>Mechanics: portals, conveyors, switches, pressure plates and doors, ice and heavy crates, and a buffer.</li>
+        <li>Economy and retention: hint and undo/rewind power-ups, star chest rewards, fail-state offers (undo, extra moves) and a shop.</li>
+      </ul>
+      <div class="links">
+        <a href="https://drive.google.com/file/d/1H-Re5qlpOG-L4ruffdNV9SvoGl1trtef/view">Watch the trailer</a>
+        <a href="https://drive.google.com/drive/folders/1QktozgV7nM63LS3-EqvjbIapFAjQArL8">See 20 screenshots</a>
+      </div>
+    </div>
+    <div class="fig" style="padding:0;border:0;background:none">
+      <video controls preload="none" playsinline poster="media/slidefactory.jpg"><source src="media/slidefactory.mp4" type="video/mp4"></video>
+      <div class="cap">Trailer</div>
+    </div>
+    <div class="full strip">
+      <figure><img src="img/sf_04_tutorial_swipe_demo.jpg" alt="Level 1 tutorial: swipe the box" loading="lazy"><figcaption>Level 1: swipe tutorial</figcaption></figure>
+      <figure><img src="img/sf_05_mechanic_card_portals.jpg" alt="Portals mechanic card" loading="lazy"><figcaption>Mechanic card: portals</figcaption></figure>
+      <figure><img src="img/sf_13_powerup_hint.jpg" alt="Hint power-up on level 22" loading="lazy"><figcaption>Hint power-up</figcaption></figure>
+      <figure><img src="img/sf_07_level36_conveyors_switch.jpg" alt="Level 36 with conveyors and switch" loading="lazy"><figcaption>Level 36: conveyors</figcaption></figure>
+      <figure><img src="img/sf_06_level60_all_mechanics.jpg" alt="Level 60 combining all mechanics" loading="lazy"><figcaption>Level 60: all mechanics</figcaption></figure>
+      <figure><img src="img/sf_16_star_chest_reward.jpg" alt="Star chest reward" loading="lazy"><figcaption>Star chest reward</figcaption></figure>
+      <figure><img src="img/sf_17_fail_undo_offer.jpg" alt="Factory jammed fail screen with undo offer" loading="lazy"><figcaption>Fail state: undo offer</figcaption></figure>
+    </div>
+  </article>
+
+  <article class="case">
+    <div>
+      <div class="kind">Product &amp; design case · hybrid-casual puzzle</div>
+      <h3>Rescue Rush</h3>
+      <p>A concept and MVP plan for the Noktune product manager case. The question: can a familiar unblock + match-3 layout feel tense without a timer or an enemy?</p>
+      <ul>
+        <li>Hypothesis: player-driven, conditional tension. Each choice fills a limited buffer and narrows the safe options.</li>
+        <li>Rescue framing as the marketable hook, layered on without touching the core loop.</li>
+        <li>A 20-level curve in four stages: learn, expand, manage, master.</li>
+        <li>Three-week sprint plan, a must-have vs nice-to-have backlog and the analytics signals that would validate it.</li>
+      </ul>
+      <div class="links"><a href="https://drive.google.com/file/d/1PGQAXstTHVaUnmrsrifUCRpRohSINxsP/view">Read the case (PDF)</a></div>
+    </div>
+    <div class="fig">
+      <svg viewBox="0 0 360 200" role="img" aria-label="Buffer states: safe, pressure, critical"><g id="buffer"></g></svg>
+      <div class="cap">Tension comes from the cost of a decision, not an external threat.</div>
+    </div>
+  </article>
+
+  <article class="case">
+    <div>
+      <div class="kind">Market analysis</div>
+      <h3>Analysis of Rollic Games</h3>
+      <p>A side-by-side teardown of four hybrid-casual puzzle hits, looking at what makes each one readable, satisfying and profitable.</p>
+      <ul>
+        <li>Mechanics, level design and difficulty ramps, from tutorial levels to late-game obstacles.</li>
+        <li>Core loops, VFX and animation feedback, and UI principles.</li>
+        <li>Monetization: rewarded and interstitial ads, an ad-free subscription and IAP for boosters, hearts and coins.</li>
+      </ul>
+      <div class="links"><a href="https://drive.google.com/file/d/1N0O21zKLaYqghVwfOY0HLaMzi9G-fbsX/view">Read the analysis (PDF)</a></div>
+    </div>
+    <div class="fig">
+      <svg viewBox="0 0 360 200" role="img" aria-label="Four games compared across six areas"><g id="rollic"></g></svg>
+      <div class="cap">Four games, six areas compared.</div>
+    </div>
+  </article>
+</div></section>
+
+<section class="band" id="games"><div class="wrap">
+  <h2>Games</h2>
+  <p class="lede">Team and solo projects in Unity and Unreal Engine 5.</p>
+  <div class="games" id="gamelist"></div>
+</div></section>
+
+<section class="band paper"><div class="wrap">
+  <h2>Toolkit</h2>
+  <div class="skills" style="margin-top:20px">
+    <div><h3>Design</h3><span class="tag">Level design docs</span><span class="tag">2D layouts</span><span class="tag">Flow &amp; beat charts</span><span class="tag">Whiteboxing</span><span class="tag">Puzzle &amp; difficulty curves</span><span class="tag">Market analysis</span></div>
+    <div><h3>Engines &amp; tools</h3><span class="tag">Unreal Engine 5</span><span class="tag">Unity</span><span class="tag">Trello</span></div>
+    <div><h3>Education</h3><p>BA, Digital Game Design<br>Bahçeşehir University, Istanbul · 2021–2025</p><p style="color:var(--mute);font-size:15px">Turkish (native) · English</p></div>
+  </div>
+</div></section>
+
+<section class="band contact" id="contact"><div class="wrap">
+  <h2>Let's make something</h2>
+  <p class="lede">Open to game design and level design roles.</p>
+  <div class="mail">arda.kilic0@hotmail.com</div>
+  <div class="btns">
+    <a class="btn main" href="mailto:arda.kilic0@hotmail.com">Email me</a>
+    <a class="btn" style="color:var(--bg)" href="https://drive.google.com/file/d/1TRje8spyxZyESHWWrJtm1AG9_o535GQB/view">CV</a>
+  </div>
+</div></section>
+<footer><div class="wrap">© Arda Kılıç · Istanbul</div></footer>
+
+<script>
+{
+const D='https://drive.google.com/file/d/';
+const rooms=[
+ {x:40,y:260,w:220,h:140,t:'2021 · Bahçeşehir Univ.',s:'Digital Game Design'},
+ {x:300,y:260,w:260,h:140,t:'2025 · Eudemonia Games',s:'Game Dev Intern · Unity'},
+ {x:300,y:40,w:260,h:180,t:'2025 · TaleWorlds',s:'Level Design Intern'},
+ {x:40,y:40,w:220,h:180,t:'Next level',s:'Your studio?'}];
+document.getElementById('rooms').innerHTML=rooms.map((r,i)=>`
+ <rect x="${r.x+7}" y="${r.y+7}" width="${r.w}" height="${r.h}" rx="4" fill="var(--shade)"/>
+ <rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" rx="4" fill="var(--block)"/>
+ <rect x="${r.x}" y="${r.y}" width="${r.w}" height="6" rx="3" fill="var(--blockTop)"/>
+ <text x="${r.x+18}" y="${r.y+32}" font-size="15" font-weight="700" fill="${i==3?'var(--tel)':'var(--ink)'}" font-family="Archivo">${r.t}</text>
+ <text x="${r.x+18}" y="${r.y+52}" font-size="13" fill="var(--mute)">${r.s}</text>`).join('')+
+ `<rect x="260" y="352" width="40" height="40" fill="var(--block)"/><rect x="500" y="220" width="40" height="40" fill="var(--block)"/><rect x="260" y="130" width="40" height="40" fill="var(--block)"/>`;
+
+const st=[['Safe','Plenty of safe options',2,'var(--tel)'],['Pressure','Choose the next move carefully',5,'#e8a317'],['Critical','Buffer full: no match, no room',7,'var(--acc)']];
+document.getElementById('buffer').innerHTML=st.map((s,i)=>{const y=6+i*64;let cells='';for(let k=0;k<7;k++)cells+=`<rect x="${k*30}" y="${y+26}" width="26" height="26" rx="4" fill="${k<s[2]?s[3]:'var(--block)'}"/>`;return `<text x="0" y="${y+16}" font-size="14" font-weight="700" fill="var(--ink)" font-family="Archivo">${s[0]}</text>${cells}<text x="222" y="${y+38}" font-size="12" fill="var(--mute)" font-family="Inter"><tspan x="222">${s[1].split(':')[0]}</tspan>${s[1].includes(':')?`<tspan x="222" dy="15">${s[1].split(':')[1].trim()}</tspan>`:''}</text>`}).join('');
+
+const gs=['Color Block Jam','Crowd Express','Hole People','Knit Out'],ar=['Mechanics','Difficulty','Monetization','VFX','Core loop','UI'];
+let rg='';ar.forEach((a,j)=>{rg+=`<text x="${130+j*38+12}" y="14" text-anchor="middle" font-size="10.5" fill="var(--mute)" font-family="Inter">${a.slice(0,4)}</text>`});
+gs.forEach((g,i)=>{const y=30+i*42;rg+=`<text x="0" y="${y+18}" font-size="12.5" fill="var(--ink)" font-family="Inter">${g}</text>`;ar.forEach((a,j)=>{rg+=`<rect x="${130+j*38}" y="${y}" width="26" height="26" rx="4" fill="var(--tel)" opacity="${.45+j*.1}"/>`})});
+document.getElementById('rollic').innerHTML=rg;
+
+const games=[
+ ['Tiny Planets','Unity · Level Designer, UI Designer','A third-person game about space pollution with an unusual gravity system, made for games4change.','1Wt1ykIdcb9WMPCbg44pfqqIFENkvabqy','#127a86',''],
+ ['Hokkaido','Unreal Engine 5 · Game Developer, Level Designer','A 3D third-person platformer: a monkey crosses courses and enemies with the help of a Hokkaido pumpkin to reach space.','1552fMbQoTe1DiYtPbCm9VvpmO4BSF6Ib','#ff5a1f','hokkaido'],
+ ['Carrot Cake','Unreal Engine 5 · Game Developer, Level Designer','A first-person farming game: back at his late grandmother\'s farmhouse, the hero tries to bake her carrot cake.','1U12SPvXqF-0-H9DrRy95k0zQetfN49tv','#e8a317','carrotcake'],
+ ['Sandstorm','Unreal Engine 5 · Game Developer, Game Designer','A 2.5D endless-runner platformer about a rock trying to outrun a sandstorm.','1cie7Za0mYkGSCwIcXxTqkaydy1JPLMec','#c98a4b',''],
+ ['Born to Die','Unreal Engine 5 · Game Developer','A third-person hack-and-slash shooter: a man with a fatal illness faces a zombie invasion his illness may help stop.','1LKylMyTsRCPfu0m_wHXc8MNXJURmOiUV','#8f2d3a','borntodie'],
+ ['Angry Joe Mama','Unreal Engine 5 · Game Developer','A comedy hack-and-slash: get revenge on an evil stepmother by breaking everything in the house.','1XEBJe4cbMQjwfXLMhIkSLb603dw10F-F','#6b4bd6','angryjoemama']];
+const thumb=(c,i)=>`<svg class="thumb" viewBox="0 0 300 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="120" fill="${c}"/>${[0,1,2,3].map(k=>`<rect x="${20+k*70+(i*13)%30}" y="${60-((k+i)%3)*18}" width="${44+((k*i)%3)*10}" height="${70+((k+i)%3)*18}" rx="3" fill="#fff" opacity="${.12+k*.05}"/>`).join('')}<circle cx="${240-(i*23)%120}" cy="34" r="12" fill="#fff" opacity=".85"/></svg>`;
+document.getElementById('gamelist').innerHTML=games.map((g,i)=>`<article class="game">${g[5]?`<video controls preload="none" playsinline poster="media/${g[5]}.jpg"><source src="media/${g[5]}.mp4" type="video/mp4"></video>`:thumb(g[4],i)}<div class="body"><h3>${g[0]}</h3><div class="meta">${g[1]}</div><p>${g[2]}</p>${g[5]?'':`<div class="links"><a href="${D}${g[3]}/view">Watch video on Drive</a></div>`}</div></article>`).join('');
+}
+</script>
+</body>
+</html>
