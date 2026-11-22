@@ -224,7 +224,7 @@ footer{font-size:13px;padding:20px max(5vw,16px);color:var(--mute)}
   <h2>Toolkit</h2>
   <div class="skills" style="margin-top:20px">
     <div><h3>Design</h3><span class="tag">Level design docs</span><span class="tag">2D layouts</span><span class="tag">Flow &amp; beat charts</span><span class="tag">Whiteboxing</span><span class="tag">Puzzle &amp; difficulty curves</span><span class="tag">Market analysis</span></div>
-    <div><h3>Engines &amp; tools</h3><span class="tag">Unreal Engine 5</span><span class="tag">Unity</span><span class="tag">Trello</span></div>
+    <div><h3>Engines &amp; tools</h3><span class="tag">Unreal Engine 5</span><span class="tag">Unity</span><span class="tag">Blender</span><span class="tag">Figma</span><span class="tag">Trello</span></div>
     <div><h3>Education</h3><p>BA, Digital Game Design<br>Bahçeşehir University, Istanbul · 2021–2025</p><p style="color:var(--mute);font-size:15px">Turkish (native) · English</p></div>
   </div>
 </div></section>
@@ -256,7 +256,7 @@ const games=[
  ['Carrot Cake','Unreal Engine 5 · Game Developer, Level Designer','A first-person farming game: back at his late grandmother\'s farmhouse, the hero tries to bake her carrot cake.','1U12SPvXqF-0-H9DrRy95k0zQetfN49tv','#e8a317','carrotcake'],
  ['Sandstorm','Unreal Engine 5 · Game Developer, Game Designer','A 2.5D endless-runner platformer about a rock trying to outrun a sandstorm.','1cie7Za0mYkGSCwIcXxTqkaydy1JPLMec','#c98a4b',''],
  ['Born to Die','Unreal Engine 5 · Game Developer','A third-person hack-and-slash shooter: a man with a fatal illness faces a zombie invasion his illness may help stop.','1LKylMyTsRCPfu0m_wHXc8MNXJURmOiUV','#8f2d3a','borntodie'],
- ['Angry Joe Mama','Unreal Engine 5 · Game Developer','A comedy hack-and-slash: get revenge on an evil stepmother by breaking everything in the house.','1XEBJe4cbMQjwfXLMhIkSLb603dw10F-F','#6b4bd6','angryjoemama']];
+ ['Anger Joe Mama','Unreal Engine 5 · Game Developer','A comedy hack-and-slash: get revenge on an evil stepmother by breaking everything in the house.','1XEBJe4cbMQjwfXLMhIkSLb603dw10F-F','#6b4bd6','angryjoemama']];
 const thumb=(c,i)=>`<svg class="thumb" viewBox="0 0 300 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="120" fill="${c}"/>${[0,1,2,3].map(k=>`<rect x="${20+k*70+(i*13)%30}" y="${60-((k+i)%3)*18}" width="${44+((k*i)%3)*10}" height="${70+((k+i)%3)*18}" rx="3" fill="#fff" opacity="${.12+k*.05}"/>`).join('')}<circle cx="${240-(i*23)%120}" cy="34" r="12" fill="#fff" opacity=".85"/></svg>`;
 document.getElementById('gamelist').innerHTML=games.map((g,i)=>`<article class="game">${g[5]?`<video controls preload="none" playsinline poster="media/${g[5]}.jpg"><source src="media/${g[5]}.mp4" type="video/mp4"></video>`:thumb(g[4],i)}<div class="body"><h3>${g[0]}</h3><div class="meta">${g[1]}</div><p>${g[2]}</p>${g[5]?'':`<div class="links"><a href="${D}${g[3]}/view">Watch video on Drive</a></div>`}</div></article>`).join('');
 }
