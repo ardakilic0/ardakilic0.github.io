@@ -24,12 +24,28 @@ h1{font-family:Archivo,Inter,sans-serif;font-weight:800;font-size:32px;margin:0 
 <body>
 <header><div class="bar">
   <a class="back" href="./">← Arda Kılıç</a>
-  <a class="btn" href="Arda_Kilic_CV.pdf" download="Arda_Kilic_CV.pdf"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v9.59l3.3-3.3a1 1 0 1 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.42l3.3 3.3V4a1 1 0 0 1 1-1zM5 19h14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2z"/></svg>Download PDF</a>
+  <a class="btn" id="dl" href="Arda_Kilic_CV.pdf" download="Arda_Kilic_CV.pdf"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v9.59l3.3-3.3a1 1 0 1 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.42l3.3 3.3V4a1 1 0 0 1 1-1zM5 19h14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2z"/></svg>Download PDF</a>
 </div></header>
 <main>
   <h1>CV</h1>
   <img class="page" src="img/cv/p-1.jpg" alt="CV page 1">
   <img class="page" src="img/cv/p-2.jpg" alt="CV page 2" loading="lazy">
 </main>
+<script>
+{
+const b=document.getElementById('dl');
+b.addEventListener('click',async e=>{
+  e.preventDefault();
+  try{
+    const r=await fetch(b.getAttribute('href'),{cache:'no-store'});
+    if(!r.ok)throw 0;
+    const blob=new Blob([await r.arrayBuffer()],{type:'application/octet-stream'});
+    const u=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=u;a.download='Arda_Kilic_CV.pdf';document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(u),4000);
+  }catch(_){location.href=b.getAttribute('href')}
+});
+}
+</script>
 </body>
 </html>
