@@ -33,17 +33,22 @@ h1{font-family:Archivo,Inter,sans-serif;font-weight:800;font-size:32px;margin:0 
 </main>
 <script>
 {
-const b=document.getElementById('dl');
-b.addEventListener('click',async e=>{
+const b=document.getElementById('dl'),url=b.getAttribute('href'),name='Arda_Kilic_CV.pdf';
+const ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+let file=null;
+fetch(url,{cache:'no-store'}).then(r=>r.ok?r.blob():null).then(bl=>{if(bl)file=new File([bl],name,{type:'application/pdf'})}).catch(()=>{});
+function save(bl){
+  const u=URL.createObjectURL(new Blob([bl],{type:'application/octet-stream'})),a=document.createElement('a');
+  a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(u),4000);
+}
+b.addEventListener('click',e=>{
   e.preventDefault();
-  try{
-    const r=await fetch(b.getAttribute('href'),{cache:'no-store'});
-    if(!r.ok)throw 0;
-    const blob=new Blob([await r.arrayBuffer()],{type:'application/octet-stream'});
-    const u=URL.createObjectURL(blob),a=document.createElement('a');
-    a.href=u;a.download='Arda_Kilic_CV.pdf';document.body.appendChild(a);a.click();a.remove();
-    setTimeout(()=>URL.revokeObjectURL(u),4000);
-  }catch(_){location.href=b.getAttribute('href')}
+  if(ios&&file&&navigator.canShare&&navigator.canShare({files:[file]})){
+    navigator.share({files:[file],title:name}).catch(()=>{});return;
+  }
+  if(file){save(file);return}
+  fetch(url).then(r=>r.blob()).then(save).catch(()=>{location.href=url});
 });
 }
 </script>
