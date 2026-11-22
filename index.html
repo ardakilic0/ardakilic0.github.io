@@ -7,15 +7,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* VOICE: confident, practical; a level designer showing his process.
-   IDEA: the page behaves like a level design document: whitebox blocks on grid paper, a critical path.
-   PICTURE: top-down whitebox map of his career, dashed player path from start to an exit portal.
-   COLOUR and TYPE: graph-paper white, whitebox greys, ink; player-start orange accent, portal teal support. Archivo + Inter.
-   LAYOUT: hero map beside name; experience; four case studies as document sheets; game grid; contact band. */
+/* Simple, clean portfolio: white and near-black, one orange accent, Archivo + Inter. */
 :root{color-scheme:light dark;
 --bg:light-dark(#f6f7f8,#101317);--ink:light-dark(#14171c,#e9ecf0);--mute:light-dark(#596270,#9aa4b1);
 --grid:light-dark(#e3e7ec,#1b2027);--block:light-dark(#d5dbe2,#2a313a);--blockTop:light-dark(#e9edf1,#36404b);--shade:light-dark(#b6bfca,#0a0c0f);
---card:light-dark(#ffffff,#161b21);--line:light-dark(#d9dee4,#262d36);
+--card:light-dark(#ffffff,#161b21);--alt:light-dark(#eef0f3,#0c0f13);--line:light-dark(#d9dee4,#262d36);
 --acc:#ff5a1f;--accInk:light-dark(#c63d0a,#ff7a45);--tel:light-dark(#127a86,#3cc3cf)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
@@ -23,7 +19,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-u
 a{color:inherit}
 .band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
 .wrap{max-width:1240px;margin:0 auto}
-.paper{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px}
+.alt{background:var(--alt)}
 h1,h2,h3{font-family:Archivo,Inter,sans-serif;line-height:1.05;text-wrap:balance;margin:0}
 h1{font-size:clamp(40px,6vw,64px);font-weight:800;letter-spacing:-.02em}
 h2{font-size:clamp(28px,3.4vw,40px);font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
@@ -35,17 +31,12 @@ nav .wrap{display:flex;flex-wrap:wrap;gap:4px 20px;align-items:center;padding:10
 nav b{font-family:Archivo,Inter,system-ui,sans-serif;font-weight:800;margin-right:auto}
 nav a{text-decoration:none;color:var(--mute);font-size:15px;padding:8px 0}
 nav a:hover,nav a:focus-visible{color:var(--ink)}
-.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.hero{max-width:760px;margin:0 auto 0 0;padding-block:clamp(24px,6vw,72px) clamp(8px,2vw,24px)}
 .role{font-family:Archivo,Inter,system-ui,sans-serif;font-weight:700;font-size:clamp(20px,2.4vw,26px);color:var(--accInk);margin:14px 0 16px}
 .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
 .btn{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:6px;font-weight:600;text-decoration:none;border:2px solid var(--ink)}
 .btn.main{background:var(--ink);color:var(--bg)}
 .btn:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-.map{width:100%;height:auto;display:block}
-.map text{font-family:Inter,sans-serif}
-.path{stroke-dasharray:10 8;animation:walk 1.6s linear infinite}
-@keyframes walk{to{stroke-dashoffset:-36}}
-@media(prefers-reduced-motion:reduce){.path{animation:none}}
 .jobs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .job{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px}
 .when{color:var(--mute);font-size:14px;white-space:nowrap}
@@ -82,35 +73,23 @@ video,.shot{display:block;width:100%;height:auto;border-radius:8px;background:#0
 .contact .btn{border-color:var(--bg)}.contact .btn.main{background:var(--acc);border-color:var(--acc);color:#fff}
 .mail{font-size:clamp(20px,3vw,28px);font-family:Archivo,Inter,system-ui,sans-serif;font-weight:700;overflow-wrap:anywhere}
 footer{font-size:13px;padding:20px max(5vw,16px);color:var(--mute)}
-@media(max-width:900px){.hero,.case{grid-template-columns:minmax(0,1fr)}.games,.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){.case{grid-template-columns:minmax(0,1fr)}.games,.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.jobs,.games,.skills{grid-template-columns:minmax(0,1fr)}nav a.hide{display:none}}
 </style>
 </head>
 <body>
-<nav><div class="wrap"><b>Arda Kılıç</b><a href="#experience" class="hide">Experience</a><a href="#work">Case studies</a><a href="#games">Games</a><a href="#contact">Contact</a></div></nav>
+<nav><div class="wrap"><b>Arda Kılıç</b><a href="#experience" class="hide">Experience</a><a href="#work">Projects</a><a href="#games">Games</a><a href="#contact">Contact</a></div></nav>
 
-<header class="band paper"><div class="wrap hero">
+<header class="band"><div class="wrap hero">
   <div>
     <h1>Arda Kılıç</h1>
     <div class="role">Game Designer &amp; Level Designer</div>
     <p class="lede" style="color:var(--ink)">I design levels, puzzles and the systems around them, from paper layouts and beat charts to whitebox and shipped content. Former level design intern at TaleWorlds Entertainment (Mount &amp; Blade II: Bannerlord). Based in Istanbul.</p>
     <div class="btns">
-      <a class="btn main" href="#work">See my work</a>
+      <a class="btn main" href="#work">View projects</a>
       <a class="btn" href="https://drive.google.com/file/d/1TRje8spyxZyESHWWrJtm1AG9_o535GQB/view">Download CV</a>
     </div>
   </div>
-  <svg class="map" viewBox="0 0 600 440" role="img" aria-label="Top-down level map of Arda's path: Bahçeşehir University, Eudemonia Games, TaleWorlds, next level">
-    <defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 8L8 0" stroke="var(--shade)" stroke-width="1"/></pattern></defs>
-    <rect x="20" y="20" width="560" height="400" rx="6" fill="url(#hatch)" opacity=".45"/>
-    <g id="rooms"></g>
-    <path class="path" d="M92 372 H520 V150 H160" fill="none" stroke="var(--acc)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="92" cy="372" r="11" fill="var(--acc)"/><circle cx="92" cy="372" r="4" fill="#fff"/>
-    <text x="110" y="352" font-size="12" font-weight="600" fill="var(--accInk)">Player start</text>
-    <g transform="translate(150 150)">
-      <circle r="30" fill="none" stroke="var(--tel)" stroke-width="3" stroke-dasharray="6 5"/>
-      <circle r="20" fill="var(--tel)" opacity=".25"/><circle r="10" fill="var(--tel)"/>
-    </g>
-  </svg>
 </div></header>
 
 <section class="band" id="experience"><div class="wrap">
@@ -126,13 +105,13 @@ footer{font-size:13px;padding:20px max(5vw,16px);color:var(--mute)}
   </div>
 </div></section>
 
-<section class="band paper" id="work"><div class="wrap">
-  <h2>Case studies</h2>
-  <p class="lede">Design work with the documents behind it: layouts, flow and beat charts, difficulty curves and validation plans.</p>
+<section class="band alt" id="work"><div class="wrap">
+  <h2>Projects</h2>
+  <p class="lede">Level design, mobile puzzle design and game analysis, with the documents, videos and slides behind each one.</p>
 
   <article class="case">
     <div>
-      <div class="kind">Level design document · 3D first-person narrative</div>
+      <div class="kind">Level design project · 3D first-person narrative</div>
       <h3>Heritage</h3>
       <p>An orphan explores the house he inherited from a family he never met. Two enclosed levels, the ground floor and a dark labyrinthine cellar, where progress is gated by keys and light.</p>
       <ul>
@@ -199,16 +178,16 @@ footer{font-size:13px;padding:20px max(5vw,16px);color:var(--mute)}
 
   <article class="case">
     <div>
-      <div class="kind">Product &amp; design case · hybrid-casual puzzle</div>
+      <div class="kind">Game concept &amp; MVP plan · slides</div>
       <h3>Rescue Rush</h3>
-      <p>A concept and MVP plan for the Noktune product manager case. The question: can a familiar unblock + match-3 layout feel tense without a timer or an enemy?</p>
+      <p>A hybrid-casual puzzle concept and MVP plan, prepared for Noktune. The question: can a familiar unblock + match-3 layout feel tense without a timer or an enemy?</p>
       <ul>
         <li>Hypothesis: player-driven, conditional tension. Each choice fills a limited buffer and narrows the safe options.</li>
         <li>Rescue framing as the marketable hook, layered on without touching the core loop.</li>
         <li>A 20-level curve in four stages: learn, expand, manage, master.</li>
         <li>Three-week sprint plan, a must-have vs nice-to-have backlog and the analytics signals that would validate it.</li>
       </ul>
-      <div class="links"><a href="https://drive.google.com/file/d/1PGQAXstTHVaUnmrsrifUCRpRohSINxsP/view">Read the case (PDF)</a></div>
+      <div class="links"><a href="https://drive.google.com/file/d/1PGQAXstTHVaUnmrsrifUCRpRohSINxsP/view">View the slides</a></div>
     </div>
     <div class="fig">
       <svg viewBox="0 0 360 200" role="img" aria-label="Buffer states: safe, pressure, critical"><g id="buffer"></g></svg>
@@ -218,7 +197,7 @@ footer{font-size:13px;padding:20px max(5vw,16px);color:var(--mute)}
 
   <article class="case">
     <div>
-      <div class="kind">Market analysis</div>
+      <div class="kind">Market analysis · slides</div>
       <h3>Analysis of Rollic Games</h3>
       <p>A side-by-side teardown of four hybrid-casual puzzle hits, looking at what makes each one readable, satisfying and profitable.</p>
       <ul>
@@ -226,7 +205,7 @@ footer{font-size:13px;padding:20px max(5vw,16px);color:var(--mute)}
         <li>Core loops, VFX and animation feedback, and UI principles.</li>
         <li>Monetization: rewarded and interstitial ads, an ad-free subscription and IAP for boosters, hearts and coins.</li>
       </ul>
-      <div class="links"><a href="https://drive.google.com/file/d/1N0O21zKLaYqghVwfOY0HLaMzi9G-fbsX/view">Read the analysis (PDF)</a></div>
+      <div class="links"><a href="https://drive.google.com/file/d/1N0O21zKLaYqghVwfOY0HLaMzi9G-fbsX/view">View the slides</a></div>
     </div>
     <div class="fig">
       <svg viewBox="0 0 360 200" role="img" aria-label="Four games compared across six areas"><g id="rollic"></g></svg>
@@ -241,7 +220,7 @@ footer{font-size:13px;padding:20px max(5vw,16px);color:var(--mute)}
   <div class="games" id="gamelist"></div>
 </div></section>
 
-<section class="band paper"><div class="wrap">
+<section class="band alt"><div class="wrap">
   <h2>Toolkit</h2>
   <div class="skills" style="margin-top:20px">
     <div><h3>Design</h3><span class="tag">Level design docs</span><span class="tag">2D layouts</span><span class="tag">Flow &amp; beat charts</span><span class="tag">Whiteboxing</span><span class="tag">Puzzle &amp; difficulty curves</span><span class="tag">Market analysis</span></div>
@@ -251,8 +230,7 @@ footer{font-size:13px;padding:20px max(5vw,16px);color:var(--mute)}
 </div></section>
 
 <section class="band contact" id="contact"><div class="wrap">
-  <h2>Let's make something</h2>
-  <p class="lede">Open to game design and level design roles.</p>
+  <h2 style="margin-bottom:16px">Contact</h2>
   <div class="mail">arda.kilic0@hotmail.com</div>
   <div class="btns">
     <a class="btn main" href="mailto:arda.kilic0@hotmail.com">Email me</a>
@@ -264,19 +242,6 @@ footer{font-size:13px;padding:20px max(5vw,16px);color:var(--mute)}
 <script>
 {
 const D='https://drive.google.com/file/d/';
-const rooms=[
- {x:40,y:260,w:220,h:140,t:'2021 · Bahçeşehir Univ.',s:'Digital Game Design'},
- {x:300,y:260,w:260,h:140,t:'2025 · Eudemonia Games',s:'Game Dev Intern · Unity'},
- {x:300,y:40,w:260,h:180,t:'2025 · TaleWorlds',s:'Level Design Intern'},
- {x:40,y:40,w:220,h:180,t:'Next level',s:'Your studio?'}];
-document.getElementById('rooms').innerHTML=rooms.map((r,i)=>`
- <rect x="${r.x+7}" y="${r.y+7}" width="${r.w}" height="${r.h}" rx="4" fill="var(--shade)"/>
- <rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" rx="4" fill="var(--block)"/>
- <rect x="${r.x}" y="${r.y}" width="${r.w}" height="6" rx="3" fill="var(--blockTop)"/>
- <text x="${r.x+18}" y="${r.y+32}" font-size="15" font-weight="700" fill="${i==3?'var(--tel)':'var(--ink)'}" font-family="Archivo">${r.t}</text>
- <text x="${r.x+18}" y="${r.y+52}" font-size="13" fill="var(--mute)">${r.s}</text>`).join('')+
- `<rect x="260" y="352" width="40" height="40" fill="var(--block)"/><rect x="500" y="220" width="40" height="40" fill="var(--block)"/><rect x="260" y="130" width="40" height="40" fill="var(--block)"/>`;
-
 const st=[['Safe','Plenty of safe options',2,'var(--tel)'],['Pressure','Choose the next move carefully',5,'#e8a317'],['Critical','Buffer full: no match, no room',7,'var(--acc)']];
 document.getElementById('buffer').innerHTML=st.map((s,i)=>{const y=6+i*64;let cells='';for(let k=0;k<7;k++)cells+=`<rect x="${k*30}" y="${y+26}" width="26" height="26" rx="4" fill="${k<s[2]?s[3]:'var(--block)'}"/>`;return `<text x="0" y="${y+16}" font-size="14" font-weight="700" fill="var(--ink)" font-family="Archivo">${s[0]}</text>${cells}<text x="222" y="${y+38}" font-size="12" fill="var(--mute)" font-family="Inter"><tspan x="222">${s[1].split(':')[0]}</tspan>${s[1].includes(':')?`<tspan x="222" dy="15">${s[1].split(':')[1].trim()}</tspan>`:''}</text>`}).join('');
 
